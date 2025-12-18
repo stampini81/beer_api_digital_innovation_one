@@ -1,56 +1,91 @@
-<h2>Digital Innovation: Expert class - Desenvolvimento de testes unitários para validar uma API REST de gerenciamento de estoques de cerveja.</h2>
+## Beer Stock API (Desafio)
 
-Nesta live coding, vamos aprender a testar, unitariamente, uma API REST para o gerenciamento de estoques de cerveja. Vamos desenvolver testes unitários para validar o nosso sistema de gerenciamento de estoques de cerveja, e também apresentar os principais conceitos e vantagens de criar testes unitários com JUnit e Mockito. Além disso, vamos também mostrar como desenvolver funcionalidades da nossa API através da prática do TDD.
+API REST para gerenciamento de estoque de cervejas (cadastro, listagem, consulta e exclusão), com testes automatizados e documentação OpenAPI/Swagger.
 
-Durante a sessão, serão abordados os seguintes tópicos:
+## O que foi feito (implementações)
 
-* Baixar um projeto através do Git para desenolver nossos testes unitários. 
-* Apresentação conceitual sobre testes: a pirâmide dos tipos de testes, e também a importância de cada tipo de teste durante o ciclo de desenvolvimento.
-* Foco nos testes unitários: mostrar o porque é importante o desenvolvimento destes tipos de testes como parte do ciclo de desenvolvimento de software.
-* Principais frameworks para testes unitários em Java: JUnit, Mockito e Hamcrest. 
-* Desenvolvimento de testes unitários para validação de funcionalides básicas: criação, listagem, consulta por nome e exclusão de cervejas.
-* TDD: apresentação e exemplo prático em 2 funcionaliades importantes: incremento e decremento do número de cervejas no estoque.
+- Implementação completa da API REST de gerenciamento de estoque de cervejas.
+- Criação de testes unitários e testes de controller com JUnit 5 + Mockito, cobrindo:
+	- criação, listagem, consulta por nome e exclusão;
+	- operações de incremento e decremento de estoque (incluindo cenários de erro).
+- Atualização do projeto para rodar em Java 21 (LTS).
+- Atualização do projeto para Spring Boot 3.2.x e migração de `javax.*` para `jakarta.*`.
+- Substituição do Swagger Springfox (legado) por Springdoc OpenAPI (Swagger UI).
 
-Para executar o projeto no terminal, digite o seguinte comando:
+### Status da entrega
 
-```shell script
-mvn spring-boot:run 
+- Projeto compilando e executando com Java 21 (LTS)
+- Suíte de testes executando via Maven Wrapper
+- Documentação disponível via Swagger UI
+
+### Tecnologias
+
+- Java 21 (LTS)
+- Spring Boot 3.2.x
+- Spring Web + Validation
+- Spring Data JPA + H2 (memória)
+- Lombok + MapStruct
+- Springdoc OpenAPI (Swagger UI)
+- JUnit 5 + Mockito (testes)
+
+### Funcionalidades implementadas
+
+- CRUD básico de cervejas:
+	- Criar cerveja
+	- Listar cervejas
+	- Buscar cerveja por nome
+	- Remover cerveja por id
+- Operação de incremento de quantidade em estoque (com validações)
+- Operação de decremento de quantidade em estoque (com validações)
+- Regras de validação de payload (Bean Validation)
+- Documentação dos endpoints via OpenAPI
+- Testes unitários e testes de controller
+
+### Como executar (Windows)
+
+Requisitos:
+
+- Java 21 instalado e configurado no PATH
+
+Executar a aplicação:
+
+```bash
+./mvnw.cmd spring-boot:run
 ```
 
-Para executar a suíte de testes desenvolvida durante a live coding, basta executar o seguinte comando:
+Aplicação disponível em:
 
-```shell script
-mvn clean test
+- http://localhost:8080
+
+### Documentação (Swagger / OpenAPI)
+
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+- OpenAPI JSON: http://localhost:8080/v3/api-docs
+
+### Endpoints principais
+
+Base path: `/api/v1/beers`
+
+- `POST /api/v1/beers` — cria uma cerveja
+- `GET /api/v1/beers` — lista cervejas
+- `GET /api/v1/beers/{name}` — busca por nome
+- `DELETE /api/v1/beers/{id}` — remove por id
+- `PATCH /api/v1/beers/{id}/increment` — incrementa quantidade
+- `PATCH /api/v1/beers/{id}/decrement` — decrementa quantidade
+
+### Como rodar os testes
+
+```bash
+./mvnw.cmd test
 ```
 
-Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:
+### Postman
 
-```
-http://localhost:8080/api/v1/beers
-```
+A collection está disponível em `postman/Beer API.postman_collection.json`.
 
-São necessários os seguintes pré-requisitos para a execução do projeto desenvolvido durante a aula:
+## Autor
 
-* Java 14 ou versões superiores.
-* Maven 3.6.3 ou versões superiores.
-* Intellj IDEA Community Edition ou sua IDE favorita.
-* Controle de versão GIT instalado na sua máquina.
-* Muita vontade de aprender e compartilhar conhecimento :)
-
-Abaixo, seguem links bem bacanas, sobre tópicos mencionados durante a aula:
-
-* [SDKMan! para gerenciamento e instalação do Java e Maven](https://sdkman.io/)
-* [Referência do Intellij IDEA Community, para download](https://www.jetbrains.com/idea/download)
-* [Palheta de atalhos de comandos do Intellij](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
-* [Site oficial do Spring](https://spring.io/)
-* [Site oficial JUnit 5](https://junit.org/junit5/docs/current/user-guide/)
-* [Site oficial Mockito](https://site.mockito.org/)
-* [Site oficial Hamcrest](http://hamcrest.org/JavaHamcrest/)
-* [Referências - testes em geral com o Spring Boot](https://www.baeldung.com/spring-boot-testing)
-* [Referência para o padrão arquitetural REST](https://restfulapi.net/)
-* [Referência pirâmide de testes - Martin Fowler](https://martinfowler.com/articles/practical-test-pyramid.html#TheImportanceOftestAutomation)
-
-[Neste link](https://drive.google.com/file/d/1KPh19mvyKirorOI-UsEYHKkmZpet3Ks6/view?usp=sharing), seguem os slides apresentados como o roteiro utilizado para o desenvolvimento do projeto da nossa sessão.
+Leandro da Silva Stampini
 
 
 
